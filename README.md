@@ -18,7 +18,8 @@ Detalle de acoplamiento: [`notion/LINKS.md`](./notion/LINKS.md)
 ```
 catalog/skills.csv                 # snapshot del inventario (~80 items)
 priority/priority-skills.json      # "Prioridad para instalar skills"
-bin/install.mjs                    # instalador de skills (npx skills)
+bin/install.mjs                    # instalador de skills (npx skills) + agrupado por tarea
+bin/group-skills.mjs               # re-analiza y agrupa skills instaladas
 bin/open-agency-app.mjs            # Agency Agents → opción app
 bin/install-agency-agents.mjs      # Agency Agents → opción Cursor
 docs/agency-agents.md              # guía aparte (no es skill CLI)
@@ -54,6 +55,30 @@ Cada item prioritario corre:
 
 ```bash
 npx skills add <owner/repo> -a cursor -y
+```
+
+Al final, el instalador **agrupa las skills por tarea** (UI, seguridad, marketing, browser, etc.):
+
+```text
+.cursor/skills/
+  ui-design/
+    taste-skill/SKILL.md
+    impeccable/SKILL.md
+    task-ui-design/SKILL.md      ← router: el agente toma todo el grupo
+  security-audit/
+    ...
+.cursor/skills-kit/task-groups.json
+```
+
+Así el agente no ve un montón de skills sueltas: si la tarea encaja con un grupo, usa el router `task-<grupo>` y aplica **todas** las skills de ese paquete.
+
+```bash
+# solo re-agrupar (sin reinstalar)
+npm run group-skills -- --target .
+npm run group-skills -- --target . --dry-run
+
+# instalar sin agrupar
+node bin/install.mjs --target . --skip-group
 ```
 
 ## Prioridad para instalar skills

@@ -12,6 +12,7 @@
     "install:priority:global": "node ./bin/install.mjs --global",
     "list": "node ./bin/install.mjs --list",
     "dry-run": "node ./bin/install.mjs --dry-run",
+    "group-skills": "node ./bin/group-skills.mjs",
     "agency:app": "node ./bin/open-agency-app.mjs",
     "agency:cursor": "node ./bin/install-agency-agents.mjs"
   },

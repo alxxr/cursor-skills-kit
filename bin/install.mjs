@@ -2,12 +2,16 @@
 /**
  * Installer for priority/priority-skills.json via skills CLI only.
  *
+ * After installs, runs task grouping (bin/group-skills.mjs) so related
+ * skills live under .cursor/skills/<task>/... with a router skill per task.
+ *
  * agency-agents is NOT installed here — see docs/agency-agents.md
  *
  * Usage:
  *   node bin/install.mjs
  *   node bin/install.mjs --target ./my-app --global
  *   node bin/install.mjs --only vercel-skills,taste-skill
+ *   node bin/install.mjs --skip-group
  *   node bin/install.mjs --list
  *   node bin/install.mjs --dry-run
  */
@@ -15,6 +19,7 @@ import { spawnSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { groupInstalledSkills } from "./group-skills.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
@@ -30,6 +35,7 @@ function parseArgs(argv) {
     global: false,
     dryRun: false,
     list: false,
+    skipGroup: false,
   };
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
@@ -44,21 +50,25 @@ function parseArgs(argv) {
     else if (a === "--global") out.global = true;
     else if (a === "--dry-run") out.dryRun = true;
     else if (a === "--list") out.list = true;
+    else if (a === "--skip-group") out.skipGroup = true;
     else if (a === "-h" || a === "--help") {
       console.log(`Install priority Cursor skills (skills CLI)
 
+After install, skills are grouped by task under:
+  .cursor/skills/<task-id>/<skill-name>/
+with a router skill task-<task-id> so the agent loads the whole bundle.
+
 agency-agents is separate → docs/agency-agents.md
-  npm run agency:app
-  npm run agency:cursor -- --target .
 
 Options:
   --target <dir>     Project to install into (default: cwd)
-  --manifest <file>  Priority JSON (default: priority/priority-skills.json)
+  --manifest <file>  Priority JSON
   --agent <name>     Agent target (default: cursor)
   --only a,b         Filter by id/keyword/source
-  --global           Install with skills -g
+  --global           Install with skills -g (+ group global dirs)
+  --skip-group       Do not run post-install task grouping
   --list             Print the priority list
-  --dry-run          Print npx commands only
+  --dry-run          Print commands only (still shows grouping plan)
 `);
       process.exit(0);
     } else {
@@ -129,7 +139,23 @@ for (const item of items) {
   }
 }
 
-console.log(`\nListo. ok=${ok} fail=${fail}`);
-console.log(`Notion Skills DB: ${NOTION_URL}`);
+console.log(`\nInstalación skills: ok=${ok} fail=${fail}`);
+
+if (!opts.skipGroup) {
+  try {
+    groupInstalledSkills({
+      target: opts.target,
+      global: opts.global,
+      dryRun: opts.dryRun,
+    });
+  } catch (err) {
+    console.warn(`Aviso: agrupación por tarea falló: ${err?.message || err}`);
+  }
+} else {
+  console.log("\n(skip) agrupación por tarea (--skip-group)");
+}
+
+console.log(`\nNotion Skills DB: ${NOTION_URL}`);
 console.log("agency-agents → npm run agency:app  |  npm run agency:cursor");
+console.log("re-agrupar luego: npm run group-skills -- --target .");
 process.exit(fail ? 1 : 0);

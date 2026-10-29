@@ -17,6 +17,7 @@ param(
   [switch]$Global,
   [switch]$DryRun,
   [switch]$List,
+  [switch]$SkipGroup,
   [string]$Agent = "cursor"
 )
 
@@ -37,6 +38,7 @@ if ($Only.Count -gt 0) { $argsList += @("--only", ($Only -join ",")) }
 if ($Global) { $argsList += "--global" }
 if ($DryRun) { $argsList += "--dry-run" }
 if ($List) { $argsList += "--list" }
+if ($SkipGroup) { $argsList += "--skip-group" }
 
 & node @argsList
 exit $LASTEXITCODE

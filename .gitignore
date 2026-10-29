@@ -6,6 +6,7 @@ Thumbs.db
 !.env.example
 *.log
 .tmp/
+.tmp-group-test/
 .cache/
 dist/
 .skills-cache/
