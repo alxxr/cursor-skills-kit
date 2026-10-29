@@ -1,21 +1,18 @@
 #!/usr/bin/env node
 /**
- * Cross-platform installer for priority/priority-skills.json
+ * Installer for priority/priority-skills.json via skills CLI only.
  *
- * Methods:
- *   skills-cli     → npx skills add <source> -a cursor -y
- *   agency-agents  → clone repo + ./scripts/install.sh --tool cursor --path <target>/.cursor/rules
+ * agency-agents is NOT installed here — see docs/agency-agents.md
  *
  * Usage:
  *   node bin/install.mjs
  *   node bin/install.mjs --target ./my-app --global
- *   node bin/install.mjs --only vercel-skills,taste-skill,agency-agents
+ *   node bin/install.mjs --only vercel-skills,taste-skill
  *   node bin/install.mjs --list
  *   node bin/install.mjs --dry-run
  */
 import { spawnSync } from "node:child_process";
-import { existsSync, mkdirSync, readFileSync } from "node:fs";
-import { homedir } from "node:os";
+import { readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -48,16 +45,20 @@ function parseArgs(argv) {
     else if (a === "--dry-run") out.dryRun = true;
     else if (a === "--list") out.list = true;
     else if (a === "-h" || a === "--help") {
-      console.log(`Install priority Cursor skills / agents
+      console.log(`Install priority Cursor skills (skills CLI)
+
+agency-agents is separate → docs/agency-agents.md
+  npm run agency:app
+  npm run agency:cursor -- --target .
 
 Options:
   --target <dir>     Project to install into (default: cwd)
   --manifest <file>  Priority JSON (default: priority/priority-skills.json)
-  --agent <name>     Agent target for skills-cli (default: cursor)
+  --agent <name>     Agent target (default: cursor)
   --only a,b         Filter by id/keyword/source
-  --global           skills-cli: install with -g
+  --global           Install with skills -g
   --list             Print the priority list
-  --dry-run          Print commands only
+  --dry-run          Print npx commands only
 `);
       process.exit(0);
     } else {
@@ -66,115 +67,6 @@ Options:
     }
   }
   return out;
-}
-
-function run(cmd, args, opts = {}) {
-  const r = spawnSync(cmd, args, {
-    stdio: "inherit",
-    shell: process.platform === "win32",
-    ...opts,
-  });
-  return r.status ?? 1;
-}
-
-function findBash() {
-  if (process.platform !== "win32") return "bash";
-  const candidates = [
-    "bash",
-    "C:\\Program Files\\Git\\bin\\bash.exe",
-    "C:\\Program Files\\Git\\usr\\bin\\bash.exe",
-  ];
-  for (const c of candidates) {
-    const r = spawnSync(c, ["-lc", "echo ok"], {
-      encoding: "utf8",
-      shell: false,
-    });
-    if (r.status === 0) return c;
-  }
-  return null;
-}
-
-function installSkillsCli(item, opts) {
-  const args = ["skills", "add", item.source, "-a", opts.agent, "-y"];
-  if (opts.global) args.push("-g");
-  if (opts.dryRun) {
-    console.log(`    dry-run: npx ${args.join(" ")}`);
-    return 0;
-  }
-  return run("npx", args, { cwd: opts.target });
-}
-
-function ensureAgencyClone(repoUrl, repoDir, dryRun) {
-  if (dryRun) {
-    console.log(`    dry-run: git clone/pull ${repoUrl} → ${repoDir}`);
-    return 0;
-  }
-  mkdirSync(dirname(repoDir), { recursive: true });
-  if (!existsSync(join(repoDir, ".git"))) {
-    mkdirSync(dirname(repoDir), { recursive: true });
-    const status = run("git", ["clone", "--depth", "1", repoUrl, repoDir]);
-    if (status !== 0) return status;
-  } else {
-    const status = run("git", ["-C", repoDir, "pull", "--ff-only"]);
-    if (status !== 0) {
-      console.warn("    aviso: git pull falló; se usa el clone en cache");
-    }
-  }
-  return 0;
-}
-
-function installAgencyAgents(item, opts) {
-  const repoUrl =
-    item.install?.repoUrl || `https://github.com/${item.source}.git`;
-  const tool = item.install?.tool || "cursor";
-  const cacheDir = join(homedir(), ".cache", "cursor-skills-kit", "agency-agents");
-  const rulesDir = join(opts.target, ".cursor", "rules");
-  const bash = findBash();
-
-  if (!bash && !opts.dryRun) {
-    console.error(
-      "    agency-agents necesita bash (Git Bash en Windows). Instala Git for Windows o WSL.",
-    );
-    return 1;
-  }
-
-  if (opts.dryRun) {
-    console.log(`    dry-run: clone ${repoUrl} → ${cacheDir}`);
-    console.log(
-      `    dry-run: ${bash || "bash"} scripts/install.sh --tool ${tool} --no-interactive --path ${rulesDir}`,
-    );
-    return 0;
-  }
-
-  const cloneStatus = ensureAgencyClone(repoUrl, cacheDir, false);
-  if (cloneStatus !== 0) return cloneStatus;
-
-  mkdirSync(rulesDir, { recursive: true });
-
-  // install.sh auto-runs convert.sh when integrations/cursor is missing
-  const script = join(cacheDir, "scripts", "install.sh").replace(/\\/g, "/");
-  const pathArg = rulesDir.replace(/\\/g, "/");
-  const status = run(bash, [
-    script,
-    "--tool",
-    tool,
-    "--no-interactive",
-    "--path",
-    pathArg,
-  ], { cwd: cacheDir, shell: false });
-
-  return status;
-}
-
-function installItem(item, opts) {
-  const method = item.method || "skills-cli";
-  console.log(
-    `==> [${item.priority}] ${item.nombre}  (${item.source})  [${method}]`,
-  );
-  if (method === "agency-agents") return installAgencyAgents(item, opts);
-  if (method === "skills-cli") return installSkillsCli(item, opts);
-  console.error(`    método desconocido: ${method}`);
-  return 1;
 }
 
 const opts = parseArgs(process.argv.slice(2));
@@ -194,11 +86,11 @@ if (opts.list) {
   for (const i of items) {
     console.log(`${String(i.priority).padStart(2)}. ${i.nombre}`);
     console.log(`    source:  ${i.source}`);
-    console.log(`    method:  ${i.method || "skills-cli"}`);
     console.log(`    keyword: ${i.keyword}`);
     console.log(`    why:     ${i.why}`);
   }
   console.log(`\nNotion: ${NOTION_URL}`);
+  console.log(`agency-agents → docs/agency-agents.md (no va en este instalador)`);
   process.exit(0);
 }
 
@@ -215,16 +107,29 @@ console.log(`Items:   ${items.length}\n`);
 let ok = 0;
 let fail = 0;
 for (const item of items) {
-  const status = installItem(item, opts);
-  if (status === 0) {
+  const args = ["skills", "add", item.source, "-a", opts.agent, "-y"];
+  if (opts.global) args.push("-g");
+  console.log(`==> [${item.priority}] ${item.nombre}  (${item.source})`);
+  if (opts.dryRun) {
+    console.log(`    dry-run: npx ${args.join(" ")}`);
+    ok++;
+    continue;
+  }
+  const r = spawnSync("npx", args, {
+    cwd: opts.target,
+    stdio: "inherit",
+    shell: process.platform === "win32",
+  });
+  if (r.status === 0) {
     ok++;
     console.log("    ok");
   } else {
     fail++;
-    console.warn(`    fallo instalando ${item.source} (exit ${status})`);
+    console.warn(`    fallo instalando ${item.source} (exit ${r.status})`);
   }
 }
 
 console.log(`\nListo. ok=${ok} fail=${fail}`);
 console.log(`Notion Skills DB: ${NOTION_URL}`);
+console.log("agency-agents → npm run agency:app  |  npm run agency:cursor");
 process.exit(fail ? 1 : 0);

@@ -18,9 +18,11 @@ Detalle de acoplamiento: [`notion/LINKS.md`](./notion/LINKS.md)
 ```
 catalog/skills.csv                 # snapshot del inventario (~80 items)
 priority/priority-skills.json      # "Prioridad para instalar skills"
-bin/install.mjs                    # instalador cross-platform (recomendado)
-bin/install.ps1 / bin/install.sh   # wrappers PowerShell / bash
-Dockerfile                         # instalar en un proyecto montado vía Docker
+bin/install.mjs                    # instalador de skills (npx skills)
+bin/open-agency-app.mjs            # Agency Agents → opción app
+bin/install-agency-agents.mjs      # Agency Agents → opción Cursor
+docs/agency-agents.md              # guía aparte (no es skill CLI)
+Dockerfile
 ```
 
 ## Requisitos
@@ -29,76 +31,94 @@ Dockerfile                         # instalar en un proyecto montado vía Docker
 - Git
 - Cursor como agente destino (`-a cursor`)
 
-## Uso rápido
-
-Desde **cualquier proyecto** donde quieras las skills:
+## Uso rápido (skills)
 
 ```bash
-# clonar el kit una vez
 git clone https://github.com/alxxr/cursor-skills-kit.git
 cd cursor-skills-kit
 
-# ver la lista prioritaria
 npm run list
-
-# dry-run
 npm run dry-run
-
-# instalar en el proyecto actual
 node bin/install.mjs --target /ruta/a/tu-proyecto
-
-# o instalar globalmente en tu usuario Cursor
 node bin/install.mjs --global
 ```
 
-En Windows (PowerShell):
+Windows (PowerShell):
 
 ```powershell
 .\bin\install.ps1 -Target "C:\path\to\project"
 .\bin\install.ps1 -Only vercel-skills,diagram-design
 ```
 
-El instalador ejecuta, por cada item prioritario:
+Cada item prioritario corre:
 
 ```bash
 npx skills add <owner/repo> -a cursor -y
 ```
 
-## Docker
+## Prioridad para instalar skills
+
+Lista en [`priority/priority-skills.json`](./priority/priority-skills.json):
+
+1. `vercel-labs/skills`
+2. `addyosmani/agent-skills`
+3. `cathrynlavery/diagram-design`
+4. `nextlevelbuilder/ui-ux-pro-max-skill`
+5. `cloudflare/security-audit-skill`
+6. `vercel-labs/agent-browser`
+7. `Leonxlnx/taste-skill`
+8. `pbakaus/impeccable`
+9. `coreyhaines31/marketingskills`
+10. `mukul975/Anthropic-Cybersecurity-Skills`
+11. `google/skills`
+
+Catálogo completo: [`catalog/skills.csv`](./catalog/skills.csv).
+
+---
+
+## Agency Agents (instalación aparte)
+
+**No** va en el instalador de skills: no tiene `SKILL.md`; es un roster de agentes/personas. Guía completa: [`docs/agency-agents.md`](./docs/agency-agents.md).
+
+### Opción 1 — App (recomendada)
+
+Abre el sitio / app nativa (Cursor, Claude Code, Codex, Gemini, etc.):
+
+**→ [https://agencyagents.app](https://agencyagents.app)**
+
+```bash
+npm run agency:app
+```
+
+macOS: `brew install --cask msitarzewski/agency-agents/agency-agents`
+
+### Opción 2 — Instalador Cursor (scripts del repo)
+
+Copia reglas `.mdc` a `.cursor/rules/` del proyecto (requiere bash / Git Bash):
+
+```bash
+npm run agency:cursor -- --target .
+npm run agency:cursor -- --target . --division engineering,design
+npm run agency:cursor -- --dry-run
+```
+
+Repo upstream: [msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents)
+
+---
+
+## Docker (solo skills prioritarias)
 
 ```bash
 docker build -t cursor-skills-kit .
-
-# monta el proyecto destino en /workspace
 docker run --rm -v /ruta/a/tu-proyecto:/workspace -w /workspace cursor-skills-kit
-docker run --rm -v /ruta/a/tu-proyecto:/workspace -w /workspace cursor-skills-kit --dry-run
 ```
-
-## Prioridad para instalar skills
-
-Lista curada (instalable vía GitHub) en [`priority/priority-skills.json`](./priority/priority-skills.json):
-
-1. `vercel-labs/skills` — toolkit / CLI de skills  
-2. `addyosmani/agent-skills` — skills de producción  
-3. `cathrynlavery/diagram-design`  
-4. `nextlevelbuilder/ui-ux-pro-max-skill`  
-5. `cloudflare/security-audit-skill`  
-6. `vercel-labs/agent-browser`  
-7. `Leonxlnx/taste-skill`  
-8. `pbakaus/impeccable`  
-9. `coreyhaines31/marketingskills`  
-10. `mukul975/Anthropic-Cybersecurity-Skills`  
-11. `msitarzewski/agency-agents` — **no** usa `npx skills`; clona el repo y corre `scripts/install.sh --tool cursor` → `.cursor/rules/`  
-12. `google/skills`
-
-El catálogo completo está en [`catalog/skills.csv`](./catalog/skills.csv). La mayoría de la prioridad usa `npx skills add`; `agency-agents` es un roster de agentes/personas y se instala con su propio script (requiere **bash**/Git Bash).
 
 ## Flujo recomendado
 
-1. Descubres / marcas items en **Skills DB** (Notion).  
-2. Si algo pasa a prioridad, lo agregas a `priority/priority-skills.json`.  
-3. En un proyecto nuevo corres `node bin/install.mjs --target .`.  
-4. Cuando una skill queda usable en tu flujo, marcas **Estado = instalada** en Notion.
+1. Marca items en **Skills DB** (Notion).
+2. Skills → `priority/priority-skills.json` + `node bin/install.mjs`.
+3. Agency Agents → app o `npm run agency:cursor`.
+4. Cuando quede usable, marca **Estado = instalada** en Notion.
 
 ## Licencia
 

@@ -11,7 +11,9 @@
     "install:priority": "node ./bin/install.mjs",
     "install:priority:global": "node ./bin/install.mjs --global",
     "list": "node ./bin/install.mjs --list",
-    "dry-run": "node ./bin/install.mjs --dry-run"
+    "dry-run": "node ./bin/install.mjs --dry-run",
+    "agency:app": "node ./bin/open-agency-app.mjs",
+    "agency:cursor": "node ./bin/install-agency-agents.mjs"
   },
   "engines": {
     "node": ">=22.20.0"

@@ -1,12 +1,13 @@
 #!/usr/bin/env pwsh
 <#
 .SYNOPSIS
-  Wrapper → bin/install.mjs (skills-cli + agency-agents).
+  Wrapper → bin/install.mjs (solo skills CLI).
+  Agency Agents: npm run agency:app | npm run agency:cursor
 
 .EXAMPLE
   .\bin\install.ps1
   .\bin\install.ps1 -Target "C:\path\to\project"
-  .\bin\install.ps1 -Only taste-skill,agency-agents -DryRun
+  .\bin\install.ps1 -Only taste-skill,diagram-design -DryRun
 #>
 [CmdletBinding()]
 param(
