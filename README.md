@@ -84,14 +84,14 @@ Lista curada (instalable vía GitHub) en [`priority/priority-skills.json`](./pri
 4. `nextlevelbuilder/ui-ux-pro-max-skill`  
 5. `cloudflare/security-audit-skill`  
 6. `vercel-labs/agent-browser`  
-7. `Leonlxnx/taste-skill`  
+7. `Leonxlnx/taste-skill`  
 8. `pbakaus/impeccable`  
 9. `coreyhaines31/marketingskills`  
 10. `mukul975/Anthropic-Cybersecurity-Skills`  
-11. `msitarzewski/agency-agents`  
+11. `msitarzewski/agency-agents` — **no** usa `npx skills`; clona el repo y corre `scripts/install.sh --tool cursor` → `.cursor/rules/`  
 12. `google/skills`
 
-El catálogo completo (incluyendo inspiración UI, builders, CLI, etc.) está en [`catalog/skills.csv`](./catalog/skills.csv). No todo el CSV es “skill instalable”; la prioridad se limita a repos que el CLI `skills` puede aplicar a Cursor.
+El catálogo completo está en [`catalog/skills.csv`](./catalog/skills.csv). La mayoría de la prioridad usa `npx skills add`; `agency-agents` es un roster de agentes/personas y se instala con su propio script (requiere **bash**/Git Bash).
 
 ## Flujo recomendado
 
