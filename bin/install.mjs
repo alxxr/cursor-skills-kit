@@ -76,7 +76,7 @@ if (opts.list) {
     console.log(`    keyword: ${i.keyword}`);
     console.log(`    why:     ${i.why}`);
   }
-  console.log(`\nNotion: https://www.notion.so/4087a3959dfc80619059c99a27a1303a`);
+  console.log(`\nNotion: https://flicker-boat-98b.notion.site/4087a3959dfc80619059c99a27a1303a?v=4087a3959dfc80759e36000cade27ff2`);
   process.exit(0);
 }
 
@@ -116,5 +116,5 @@ for (const item of items) {
 }
 
 console.log(`\nListo. ok=${ok} fail=${fail}`);
-console.log("Notion Skills DB: https://www.notion.so/4087a3959dfc80619059c99a27a1303a");
+console.log("Notion Skills DB: https://flicker-boat-98b.notion.site/4087a3959dfc80619059c99a27a1303a?v=4087a3959dfc80759e36000cade27ff2");
 process.exit(fail ? 1 : 0);

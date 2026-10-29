@@ -78,5 +78,5 @@ try {
 
 Write-Host ""
 Write-Host "Listo. ok=$ok fail=$fail"
-Write-Host "Notion Skills DB: https://www.notion.so/4087a3959dfc80619059c99a27a1303a"
+Write-Host "Notion Skills DB: https://flicker-boat-98b.notion.site/4087a3959dfc80619059c99a27a1303a?v=4087a3959dfc80759e36000cade27ff2"
 if ($fail -gt 0) { exit 1 }

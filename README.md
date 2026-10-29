@@ -8,8 +8,8 @@ La idea: el inventario vive en Notion; este repo lo hace portable (CSV + lista p
 
 | Página | Rol |
 | --- | --- |
-| [Skills DB / Skills AI](https://www.notion.so/4087a3959dfc80619059c99a27a1303a) | Base de datos: Nombre, URL, Resumen, Keyword, Estado (`por instalar` / `instalada`), Grupo |
-| [Inventario Skills Brave](https://www.notion.so/4087a3959dfc80b79a55f40fafff9ee2) | Inventario / notas del barrido original de pestañas |
+| [Skills DB / Skills AI](https://flicker-boat-98b.notion.site/4087a3959dfc80619059c99a27a1303a?v=4087a3959dfc80759e36000cade27ff2) | Base de datos: Nombre, URL, Resumen, Keyword, Estado (`por instalar` / `instalada`), Grupo |
+| [Inventario Skills Brave](https://flicker-boat-98b.notion.site/Inventario-Skills-Brave-4087a3959dfc80b79a55f40fafff9ee2) | Inventario / notas del barrido original de pestañas |
 
 Detalle de acoplamiento: [`notion/LINKS.md`](./notion/LINKS.md)
 

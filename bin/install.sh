@@ -82,5 +82,5 @@ done
 
 echo
 echo "Listo. ok=$ok fail=$fail"
-echo "Notion Skills DB: https://www.notion.so/4087a3959dfc80619059c99a27a1303a"
+echo "Notion Skills DB: https://flicker-boat-98b.notion.site/4087a3959dfc80619059c99a27a1303a?v=4087a3959dfc80759e36000cade27ff2"
 [[ "$fail" -eq 0 ]]
