@@ -1,0 +1,119 @@
+{
+  "name": "Prioridad para instalar skills",
+  "description": "Lista corta de repos/skills instalables primero en cualquier proyecto Cursor. Se sincroniza con el inventario de Notion (Skills DB).",
+  "agent": "cursor",
+  "installDefaults": {
+    "yes": true,
+    "global": false
+  },
+  "items": [
+    {
+      "id": "vercel-skills",
+      "nombre": "vercel-labs/skills",
+      "source": "vercel-labs/skills",
+      "keyword": "vercel-skills",
+      "grupo": "Skills",
+      "why": "CLI y toolkit base para instalar agent skills en Cursor",
+      "priority": 1
+    },
+    {
+      "id": "production-agent-skills",
+      "nombre": "addyosmani/agent-skills",
+      "source": "addyosmani/agent-skills",
+      "keyword": "production-agent-skills",
+      "grupo": "Skills",
+      "why": "Skills de producción listas para coding agents",
+      "priority": 2
+    },
+    {
+      "id": "diagram-design",
+      "nombre": "diagram-design",
+      "source": "cathrynlavery/diagram-design",
+      "keyword": "diagram-design",
+      "grupo": "Skills",
+      "why": "Diagramas HTML/SVG para Claude/Cursor/Copilot",
+      "priority": 3
+    },
+    {
+      "id": "ui-ux-pro-max",
+      "nombre": "ui-ux-pro-max-skill",
+      "source": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "keyword": "ui-ux-pro-max",
+      "grupo": "Skills",
+      "why": "Skill UI/UX avanzada para frontends",
+      "priority": 4
+    },
+    {
+      "id": "security-audit",
+      "nombre": "security-audit-skill",
+      "source": "cloudflare/security-audit-skill",
+      "keyword": "security-audit",
+      "grupo": "Skills",
+      "why": "Auditoría de seguridad para coding agents",
+      "priority": 5
+    },
+    {
+      "id": "agent-browser",
+      "nombre": "agent-browser",
+      "source": "vercel-labs/agent-browser",
+      "keyword": "agent-browser",
+      "grupo": "Browser y harness",
+      "why": "Automatización de navegador para agentes",
+      "priority": 6
+    },
+    {
+      "id": "taste-skill",
+      "nombre": "taste-skill",
+      "source": "Leonlxnx/taste-skill",
+      "keyword": "taste-skill",
+      "grupo": "Skills",
+      "why": "Criterio estético para agentes de diseño",
+      "priority": 7
+    },
+    {
+      "id": "impeccable",
+      "nombre": "impeccable",
+      "source": "pbakaus/impeccable",
+      "keyword": "impeccable",
+      "grupo": "Skills",
+      "why": "Vocabulario de diseño para agentes",
+      "priority": 8
+    },
+    {
+      "id": "marketing-skills",
+      "nombre": "marketingskills",
+      "source": "coreyhaines31/marketingskills",
+      "keyword": "marketing-skills",
+      "grupo": "Skills",
+      "why": "Skills de marketing aplicables a productos",
+      "priority": 9
+    },
+    {
+      "id": "cybersecurity-skills",
+      "nombre": "Anthropic-Cybersecurity-Skills",
+      "source": "mukul975/Anthropic-Cybersecurity-Skills",
+      "keyword": "cybersecurity-skills",
+      "grupo": "Skills",
+      "why": "Pack de ciberseguridad para agentes",
+      "priority": 10
+    },
+    {
+      "id": "agency-agents",
+      "nombre": "agency-agents",
+      "source": "msitarzewski/agency-agents",
+      "keyword": "agency-agents",
+      "grupo": "Agencia",
+      "why": "Framework de agencia multi-agente",
+      "priority": 11
+    },
+    {
+      "id": "google-skills",
+      "nombre": "google/skills",
+      "source": "google/skills",
+      "keyword": "google-skills",
+      "grupo": "Skills",
+      "why": "Agent Skills orientadas a productos Google",
+      "priority": 12
+    }
+  ]
+}

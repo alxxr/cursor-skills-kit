@@ -1,0 +1,26 @@
+{
+  "name": "cursor-skills-kit",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Inventario + instalador prioritario de agent skills para Cursor, acoplado a Notion Skills DB",
+  "bin": {
+    "cursor-skills-kit": "./bin/install.sh"
+  },
+  "scripts": {
+    "install:priority": "node ./bin/install.mjs",
+    "install:priority:global": "node ./bin/install.mjs --global",
+    "list": "node ./bin/install.mjs --list",
+    "dry-run": "node ./bin/install.mjs --dry-run"
+  },
+  "engines": {
+    "node": ">=22.20.0"
+  },
+  "keywords": [
+    "cursor",
+    "agent-skills",
+    "notion",
+    "skills"
+  ],
+  "license": "MIT"
+}

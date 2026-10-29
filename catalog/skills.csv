@@ -1,0 +1,81 @@
+Nombre,URL,Resumen,Keyword,Estado,Grupo
+agency-agents,https://github.com/msitarzewski/agency-agents,Framework completo de agencia con agentes IA,agency-agents,por instalar,Agencia
+wshobson/agents,https://github.com/wshobson/agents,Plataforma multi-harness para orquestar agentes,multi-harness-agents,por instalar,Agencia
+agent-office,https://github.com/harishkotra/agent-office,Observa y gestiona agentes en oficina virtual,agent-office,por instalar,Agencia
+AgentsOffice,https://github.com/HaleyCoder/AgentsOffice,Espacio colaborativo para equipo de IA,agents-office,por instalar,Agencia
+pixel-agents,https://github.com/pixel-agents-hq/pixel-agents,Oficina de agentes estilo pixel,pixel-agents,por instalar,Agencia
+ponytail,https://github.com/DietrichGebert/ponytail,Utilidades para potenciar agentes,ponytail,por instalar,Agencia
+vercel-labs/skills,https://github.com/vercel-labs/skills,Toolkit abierto de agent skills,vercel-skills,por instalar,Skills
+addyosmani/agent-skills,https://github.com/addyosmani/agent-skills,Skills de producción para agentes,production-agent-skills,por instalar,Skills
+google/skills,https://github.com/google/skills,Agent Skills para productos Google,google-skills,por instalar,Skills
+google/ax,https://github.com/google/ax,Agent Executor de Google,google-ax,por instalar,Skills
+knowledge-work-plugins,https://github.com/anthropics/knowledge-work-plugins,Plugins para trabajo de conocimiento,knowledge-work-plugins,por instalar,Skills
+claude-quickstarts,https://github.com/anthropics/claude-quickstarts,Quickstarts de Claude,claude-quickstarts,por instalar,Skills
+everything-claude-code,https://github.com/WorldFlowAI/everything-claude-code,Recurso amplio Claude Code,everything-claude-code,por instalar,Skills
+taste-skill,https://github.com/Leonlxnx/taste-skill,Skill de gusto/estética para agentes,taste-skill,por instalar,Skills
+diagram-design,https://github.com/cathrynlavery/diagram-design,Diagramas HTML/SVG para Claude/Cursor/Copilot,diagram-design,por instalar,Skills
+ui-ux-pro-max-skill,https://github.com/nextlevelbuilder/ui-ux-pro-max-skill,Skill UI/UX avanzada,ui-ux-pro-max,por instalar,Skills
+impeccable,https://github.com/pbakaus/impeccable,Vocabulario de diseño para agentes,impeccable,por instalar,Skills
+marketingskills,https://github.com/coreyhaines31/marketingskills,Skills de marketing para agentes,marketing-skills,por instalar,Skills
+security-audit-skill,https://github.com/cloudflare/security-audit-skill,Auditoría de seguridad para coding agents,security-audit,por instalar,Skills
+scientific-agent-skills,https://github.com/K-Dense-AI/scientific-agent-skills,Convierte papers científicos en skills,scientific-skills,por instalar,Skills
+Anthropic-Cybersecurity-Skills,https://github.com/mukul975/Anthropic-Cybersecurity-Skills,Skills de ciberseguridad Anthropic,cybersecurity-skills,por instalar,Skills
+agent-browser,https://github.com/vercel-labs/agent-browser,Automatización de navegador para agentes,agent-browser,por instalar,Browser y harness
+agentmemory,https://github.com/rohitg00/agentmemory,Memoria persistente para agentes,agent-memory,por instalar,Browser y harness
+codebase-memory-mcp,https://github.com/DeusData/codebase-memory-mcp,MCP de memoria local del codebase,codebase-memory-mcp,por instalar,Browser y harness
+graphity,https://github.com/Graphity-Labs/graphity,Convierte codebase en grafo,graphity,por instalar,Browser y harness
+ECC,https://github.com/affaan-m/ECC,Harness de performance para agentes,agent-harness-ecc,por instalar,Browser y harness
+awesome-harness-engineering,https://github.com/ai-boost/awesome-harness-engineering,Lista curated de harness engineering,harness-engineering,por instalar,Browser y harness
+OpenViking,https://github.com/volcengine/OpenViking,Self-evolving content para agentes,openviking,por instalar,Browser y harness
+react-doctor,https://github.com/millionco/react-doctor,Mejora el React que escribe el agente,react-doctor,por instalar,Browser y harness
+tester-army/e2e,https://github.com/tester-army/e2e,E2E testing de nueva generación,e2e-tester-army,por instalar,Browser y harness
+omniroute,https://github.com/ChrisCompton/omniroute,Router AI,omniroute,por instalar,Browser y harness
+claude-token-efficient,https://github.com/drona23/claude-token-efficient,Uso eficiente de tokens en Claude,claude-token-efficient,por instalar,Browser y harness
+claude-watcher,https://github.com/taoufik123-collab/claude-watcher,Watcher/monitoreo para Claude,claude-watcher,por instalar,Browser y harness
+system_prompts_leaks,https://github.com/asgeirtj/system_prompts_leaks,System prompts documentados,system-prompts,por instalar,Browser y harness
+strix,https://github.com/usestrix/strix,Pentesting con IA open-source,strix-pentest,por instalar,Seguridad
+zero-day-scanner,https://github.com/cyber-athen/zero-day-vulnerability-scanner,Escaneo de vulnerabilidades,zero-day-scanner,por instalar,Seguridad
+Navbar Gallery,https://navbar.gallery,Inspiración de navegación,navbar-gallery,por instalar,Diseño UI
+Footer Gallery,https://footer.gallery,Galería de footers,footer-gallery,por instalar,Diseño UI
+CTA Gallery,https://cta.gallery,Inspiración de CTAs,cta-gallery,por instalar,Diseño UI
+404s,https://404s.design,Galería de páginas 404,404-gallery,por instalar,Diseño UI
+Bento Grids,https://bentogrids.com,Layouts estilo bento,bento-grids,por instalar,Diseño UI
+60fps.design,https://60fps.design,Animación UI/UX,60fps-design,por instalar,Diseño UI
+Mobbin,https://mobbin.com,Patrones UI/UX móviles,mobbin,por instalar,Diseño UI
+Aceternity UI,https://ui.aceternity.com,Componentes React + Tailwind,aceternity-ui,por instalar,Diseño UI
+Dribbble,https://dribbble.com,Inspiración y portfolios de diseño,dribbble,por instalar,Diseño UI
+Savee,https://savee.it,Curación visual,savee,por instalar,Diseño UI
+Cosmos,https://www.cosmos.so,Inspiración visual,cosmos,por instalar,Diseño UI
+SHOTDECK,https://shotdeck.com,Referencias cinematográficas,shotdeck,por instalar,Diseño UI
+DINAMO SITES,https://dinamosites.com,Secciones web animadas,dinamo-sites,por instalar,Diseño UI
+MotionSites AI,https://motionsites.ai,Webs premium AI/motion,motionsites,por instalar,Builders
+Weblium,https://weblium.com,Website builder con AI,weblium,por instalar,Builders
+Draftly 3D,https://draftly.ai,Builder 3D no-code,draftly-3d,por instalar,Builders
+Vibiz,https://vibiz.ai,Workspace de marketing AI,vibiz-marketing,por instalar,Builders
+compa crm,https://github.com/trycompa/crm,CRM open-source con AI,compa-crm,por instalar,Builders
+ai-job-search,https://github.com/ai-job-search-dev/ai-job-search,Automatización de búsqueda de empleo,ai-job-search,por instalar,Builders
+Google-Maps-Scraper,https://github.com/zohaibbashir/Google-Maps-Scraper,Scraper de Google Maps,gmaps-scraper,por instalar,Scraping
+httpsms,https://github.com/NdoleStudio/httpsms,Enviar/recibir SMS por API,httpsms,por instalar,Scraping
+ai-website-cloner-template,https://github.com/JCodesMore/ai-website-cloner-template,Template para clonar sitios con AI,website-cloner,por instalar,Scraping
+MiroFish,https://github.com/666ghj/MiroFish,Utilidad scraper/skill,mirofish,por instalar,Scraping
+VibeVoice,https://github.com/microsoft/VibeVoice,Voz open-source frontier,vibevoice,por instalar,Video y media
+hyperframes,https://github.com/heygen-com/hyperframes,HTML a video/keyframes,hyperframes,por instalar,Video y media
+MoneyPrinterTurbo,https://github.com/harry0703/MoneyPrinterTurbo,Generación automática de video AI,money-printer-turbo,por instalar,Video y media
+OpenMontage,https://github.com/calesthio/OpenMontage,Montaje open-source,open-montage,por instalar,Video y media
+Squoosh,https://squoosh.app,Compresión de imágenes en el navegador,squoosh,por instalar,Video y media
+ossu/computer-science,https://github.com/ossu/computer-science,Currículo CS gratuito,ossu-cs,por instalar,Aprendizaje
+freeCodeCamp,https://github.com/freeCodeCamp/freeCodeCamp,Plataforma de aprendizaje coding,freecodecamp,por instalar,Aprendizaje
+30-Days-Of-Python,https://github.com/Asabeneh/30-Days-Of-Python,Curso 30 días de Python,30-days-python,por instalar,Aprendizaje
+project-based-learning,https://github.com/practical-tutorials/project-based-learning,Tutoriales por proyectos,project-based-learning,por instalar,Aprendizaje
+build-your-own-x,https://github.com/codecrafters-io/build-your-own-x,Reconstruye tecnologías desde cero,build-your-own-x,por instalar,Aprendizaje
+developer-roadmap,https://github.com/kamranahmedse/developer-roadmap,Roadmaps interactivos de desarrollador,developer-roadmap,por instalar,Aprendizaje
+guia-entrevistas,https://github.com/DevCaress/guia-entrevistas-de-programacion,Guía de entrevistas de programación,guia-entrevistas,por instalar,Aprendizaje
+brag,https://github.com/latent-spaces/brag,Showcase de proyectos construidos,brag,por instalar,Aprendizaje
+bat,https://github.com/sharkdp/bat,cat con syntax highlight,bat,por instalar,CLI
+bottom,https://github.com/ClementTsang/bottom,Monitor de sistema en terminal,bottom,por instalar,CLI
+fastfetch,https://github.com/fastfetch-cli/fastfetch,Info del sistema en terminal,fastfetch,por instalar,CLI
+chafa,https://github.com/hpjansson/chafa,Gráficos/imágenes en terminal,chafa,por instalar,CLI
+coucou,https://github.com/Louis-CFM/coucou,Widget/amigo pequeño,coucou,por instalar,Otros
+floci,https://github.com/floci-io/floci,App light/fluffy,floci,por instalar,Otros
+paperclip,https://github.com/paperclipai/paperclip,App open-source AI,paperclip,por instalar,Otros
+webapp-nfc,https://github.com/marcasanova/webapp-nfc,Webapp con NFC,webapp-nfc,por instalar,Otros
